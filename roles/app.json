@@ -1,0 +1,17 @@
+{
+  "name": "app",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "description": "The role for app servers",
+
+  "run_list": {},
+
+  "env_run_lists": {
+    "development": [
+      "role[base]",
+      "role[rvm]",
+      "role[nodejs]",
+      "role[db_postgresql]"
+    ]
+  }
+}

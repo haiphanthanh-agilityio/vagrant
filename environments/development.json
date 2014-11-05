@@ -1,0 +1,28 @@
+{
+  "name": "development",
+  "json_class": "Chef::Environment",
+  "chef_type": "environment",
+  "description": "",
+  "default_attributes": {
+    // sudo config
+    "authorization": {
+      "sudo": {
+        "users": ["vagrant"],
+        "passwordless": true
+      }
+    },
+
+    // rvm config
+    "rvm": {
+      "default_ruby": "2.1.2"
+    },
+
+    "nodejs": {
+      "version": "0.10.33"
+    },
+    
+    "postgresql": {
+      "version": "9.3"
+    }
+  }
+}

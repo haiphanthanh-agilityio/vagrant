@@ -1,0 +1,6 @@
+.bundle
+.vagrant
+.librarian
+cookbooks
+vendor
+tmp

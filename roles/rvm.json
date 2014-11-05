@@ -1,0 +1,28 @@
+{
+  "name": "rvm",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "description": "The role that used to install RVM, Ruby, Rails servers",
+  "default_attributes": {
+    "rvm": {
+      "default_ruby": "2.1.2",
+      "vagrant": { 
+          "system_chef_client": "/opt/chef/bin/chef-client",
+          "system_chef_solo": "/opt/chef/bin/chef-solo"
+      },
+
+      "group_users": ["vagrant"]
+    }
+  },
+
+  "run_list": [
+   
+  ],
+
+  "env_run_lists": {
+    "development": [
+      "recipe[rvm::vagrant]",
+      "recipe[rvm::system]"
+    ]
+  }
+}

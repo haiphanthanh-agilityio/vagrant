@@ -1,0 +1,17 @@
+{
+  "name": "nginx",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "description": "Using the Nginx web server",
+  
+  "default_attributes": {
+    "nginx": {
+      "version": "1.4.4",
+      "user": "vagrant"
+    }
+  },
+
+  "run_list": [
+     "recipe[nginx]"
+  ]
+}

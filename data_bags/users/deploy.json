@@ -1,0 +1,6 @@
+{
+	"id": "deploy",
+	"comment": "deploy user",
+	"groups": ["deploy"],
+	"ssh_keys": ["ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDKlR6KdBEIvQKDVA+k9qI7mwP/hR4nU5/dqwQbj6s1lSg69JkFxgIOGBqDiN2I6m2lHp7A9yZweqg5U88LlUoxrIfrDIG/GINCb7W9sFvRQOf/n50J5TC8S/+IcDzza54sgivWLmn1CfTtF0BYVSrXbktI/Zz/HjXXAq2YxNVIrjOjXg7RXA13MsWOe2slwf8zyJmPP9wzOZxUBWdU7QBVxMaxDUWW+GvP9gXwqUa7BTgUuB1QRU1gGxRGAn8ILjbT+/GIKcJsIwLzgh3fxsyDBJMe3Y364DnKp75hgqjyegVDXRfmDDmtSt8KdiKNhKV8T6ExZ5J5Ol2/vCC0+N8b hai.phanthanh@asnet.com.vn"]
+}

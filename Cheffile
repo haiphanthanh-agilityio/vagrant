@@ -1,0 +1,29 @@
+#!/usr/bin/env ruby
+#^syntax detection
+
+site 'https://supermarket.getchef.com/api/v1'
+
+# Core server cookbooks
+cookbook 'locale',
+  git: 'https://github.com/hw-cookbooks/locale'
+cookbook 'apt'
+cookbook 'sudo'
+cookbook 'build-essential'
+cookbook 'git', 
+  git: 'https://github.com/fnichol/chef-git.git'
+cookbook 'imagemagick'
+cookbook 'user'
+
+# App server cookbooks
+cookbook 'rvm',
+  :git => 'https://github.com/fnichol/chef-rvm'
+
+# DB server cookbooks
+cookbook 'postgresql', github: "phlipper/chef-postgresql"
+
+# Web and App server cookbooks
+cookbook 'nginx', '2.4.2'
+
+cookbook 'nodejs', '~> 2.2.0'
+# cookbook 'npm',
+#   git: 'https://github.com/soofaloofa/chef-npm-package-install'
