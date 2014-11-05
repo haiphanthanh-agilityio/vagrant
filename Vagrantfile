@@ -16,7 +16,7 @@ boxes = [
       { '--memory' => '1024' }
     ],
     forwarded_ports: [
-      { 80 => 8080 },
+      { 8003 => 8003 },
       { 3000 => 3000 }
     ],
     synced_folders: [
