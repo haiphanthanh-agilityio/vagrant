@@ -38,7 +38,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.box_url = 'https://vagrantcloud.com/ubuntu/boxes/trusty64/versions/1/providers/virtualbox.box'
 
   # ssh config
-  config.ssh.pty = true
+  # config.ssh.pty = true
   config.ssh.forward_agent = true
 
   # vagrant-omnibus
