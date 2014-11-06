@@ -10,7 +10,12 @@
           "system_chef_client": "/opt/chef/bin/chef-client",
           "system_chef_solo": "/opt/chef/bin/chef-solo"
       },
-
+      "gems": {
+        "ruby-2.1.2": [
+          { "name": "sass", "version": "3.2.13" },
+          { "name": "compass" }
+        ]
+      },
       "group_users": ["vagrant"]
     }
   },
