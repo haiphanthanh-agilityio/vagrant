@@ -1,0 +1,11 @@
+{
+  "name": "redis",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "description": "Install Redis server",
+  
+  "run_list": [
+    "recipe[redisio::install]",
+    "recipe[redisio::enable]"
+  ]
+}
