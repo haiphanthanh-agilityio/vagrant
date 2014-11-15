@@ -19,13 +19,40 @@
   },
 
   "run_list": [
-    "recipe[postgresql-locale-fix]",
-    "recipe[postgresql::client]",
-    "recipe[postgresql::server]",
-    "recipe[postgresql::server_dev]",
-    "recipe[postgresql::contrib]",
-    "recipe[postgresql::pg_user]",
-    "recipe[postgresql::configuration]",
-    "recipe[postgresql::libpq]"
-  ]
+  ],
+
+  "env_run_lists": {
+    "dev": [
+      "recipe[postgresql-locale-fix]",
+      "recipe[postgresql::client]",
+      "recipe[postgresql::server]",
+      "recipe[postgresql::server_dev]",
+      "recipe[postgresql::contrib]",
+      "recipe[postgresql::pg_user]",
+      "recipe[postgresql::configuration]",
+      "recipe[postgresql::libpq]"
+    ],
+
+    "vagrant": [
+      "recipe[postgresql-locale-fix]",
+      "recipe[postgresql::client]",
+      "recipe[postgresql::server]",
+      "recipe[postgresql::server_dev]",
+      "recipe[postgresql::contrib]",
+      "recipe[postgresql::pg_user]",
+      "recipe[postgresql::configuration]",
+      "recipe[postgresql::libpq]"
+    ],
+
+    "staging": [
+      "recipe[postgresql-locale-fix]",
+      "recipe[postgresql::client]",
+      "recipe[postgresql::server]",
+      "recipe[postgresql::server_dev]",
+      "recipe[postgresql::contrib]",
+      "recipe[postgresql::pg_user]",
+      "recipe[postgresql::configuration]",
+      "recipe[postgresql::libpq]"
+    ]
+  }
 }

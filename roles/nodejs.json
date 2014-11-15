@@ -6,16 +6,7 @@
   
   "default_attributes": {
     "nodejs": {
-      "npm_packages": [{
-        "name": "docpad",
-        "version": "6.69"
-      }, {
-        "name": "bower",
-        "version": "1.3.11"
-      }, {
-        "name": "grunt-cli",
-        "version": "0.1.13"
-      }]
+      "version": "0.10.33"
     }
   },
 

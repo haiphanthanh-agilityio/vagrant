@@ -10,7 +10,9 @@ VAGRANTFILE_API_VERSION = "2"
 boxes = [
   { 
     name: 'ranun-dev', 
-    roles: ['app'], 
+    roles: ['app'],
+    default: true,
+    autostart: true, 
     ip: '192.168.13.2', 
     vbox_config: [
       { '--memory' => '1024' }
@@ -25,6 +27,20 @@ boxes = [
     ],
     commands: [
 
+    ]
+  },
+  {
+    name: 'ranun-staging',
+    roles: ['app'], 
+    default: false,
+    autostart: false,
+    ip: '192.168.13.3',
+    vbox_config: [
+      { '--memory' => '1024' }
+    ],
+    forwarded_ports: [
+      { 3000 => 3003 },
+      { 80 => 8080 }
     ]
   }
 ]
@@ -47,7 +63,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
   
   boxes.each do |opts|
-    config.vm.define opts[:name], :priviledge => false do |config|
+    config.vm.define opts[:name], primary: opts[:default], autostart: opts[:autostart], :priviledge => false do |config|
       # set hostname
       config.vm.hostname = opts[:name]
 

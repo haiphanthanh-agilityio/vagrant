@@ -5,7 +5,7 @@
   "description": "The base role for all servers",
   "run_list": [
     "recipe[locale]",
-    "recipe[sudo]",
+    // "recipe[sudo]",
     "recipe[apt]",
     "recipe[build-essential]",
     "recipe[imagemagick]",
