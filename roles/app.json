@@ -19,6 +19,13 @@
       "role[nodejs]",
       "role[db_postgresql]",
       "role[nginx]"
+    ],
+    "staging": [
+      "role[base]",
+      "role[rvm]",
+      "role[nodejs]",
+      "role[db_postgresql]",
+      "role[nginx]"
     ]
   }
 }
