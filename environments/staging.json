@@ -5,7 +5,7 @@
   "description": "",
   "override_attributes": {
     "rvm": {
-      "group_users": ["vagrant"]
+      "group_users": ["mvdev"]
     },
 
     "nodejs": {
