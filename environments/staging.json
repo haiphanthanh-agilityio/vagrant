@@ -22,6 +22,9 @@
     },
 
     "nginx": {
+      "version": "1.4.4",
+      "user": "mvdev",
+      "group": "mvdev",
       "worker_processes": 4
     }
   }
