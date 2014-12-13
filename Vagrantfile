@@ -64,7 +64,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       # Synced folders
       opts[:synced_folders].each do |folder|
         folder.each do |folder1, folder2|
-          config.vm.synced_folder folder1, folder2
+          config.vm.synced_folder folder1, folder2, type: :nfs
         end
       end if opts[:synced_folders]
 
