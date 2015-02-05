@@ -10,7 +10,7 @@ VAGRANTFILE_API_VERSION = "2"
 boxes = [
   { 
     name: 'ranun-dev', 
-    roles: ['app'],
+    roles: ['app', 'solr'],
     default: true,
     autostart: true, 
     ip: '192.168.13.2', 
@@ -22,25 +22,11 @@ boxes = [
       { 3000 => 3000 }
     ],
     synced_folders: [
-      { '../ranunculus' => '/home/vagrant/app' },
-      { '../design' => '/home/vagrant/design' }
+      { '../ranunculus' => '/home/vagrant/app' }
+      # { '../design' => '/home/vagrant/design' }
     ],
     commands: [
 
-    ]
-  },
-  {
-    name: 'ranun-staging',
-    roles: ['app'], 
-    default: false,
-    autostart: false,
-    ip: '192.168.13.3',
-    vbox_config: [
-      { '--memory' => '1024' }
-    ],
-    forwarded_ports: [
-      { 3000 => 3003 },
-      { 80 => 8080 }
     ]
   }
 ]

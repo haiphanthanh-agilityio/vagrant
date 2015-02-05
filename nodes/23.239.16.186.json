@@ -3,6 +3,7 @@
   "description": "TribeLearn provisioning",
   "environment": "staging",
   "run_list": [
-    "role[app]"
+    "role[app]",
+    "role[solr]"
   ]  
 }

@@ -39,6 +39,11 @@
     
     "postgresql": {
       "version": "9.3"
+    },
+
+    "solr": {
+      "version": "4.2.0",
+      "port": "8983"
     }
   }
 }

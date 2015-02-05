@@ -26,6 +26,11 @@
       "user": "mvdev",
       "group": "mvdev",
       "worker_processes": 4
+    },
+
+    "solr": {
+      "version": "4.2.0",
+      "port": "8983"
     }
   }
 }
