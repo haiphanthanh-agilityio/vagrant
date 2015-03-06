@@ -4,6 +4,7 @@
   "environment": "staging",
   "run_list": [
     "role[app]",
-    "role[solr]"
+    "role[solr]",
+    "role[redis]"
   ]  
 }

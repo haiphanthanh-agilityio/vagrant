@@ -5,7 +5,7 @@
   "description": "Install Redis server",
   
   "run_list": [
-    "recipe[redisio::install]",
+    "recipe[redisio]",
     "recipe[redisio::enable]"
   ]
 }

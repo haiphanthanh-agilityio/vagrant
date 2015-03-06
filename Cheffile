@@ -30,3 +30,6 @@ cookbook 'nodejs', '~> 2.2.0'
 
 # Solr search server
 cookbook 'solr', '~> 0.3.0'
+
+# Redis server
+cookbook 'redisio'
