@@ -22,7 +22,7 @@
   ],
 
   "env_run_lists": {
-    "dev": [
+    "development": [
       "recipe[postgresql-locale-fix]",
       "recipe[postgresql::client]",
       "recipe[postgresql::server]",
