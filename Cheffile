@@ -27,3 +27,9 @@ cookbook 'nginx', '2.4.2'
 cookbook 'nodejs', '~> 2.2.0'
 # cookbook 'npm',
 #   git: 'https://github.com/soofaloofa/chef-npm-package-install'
+
+# Solr search server
+cookbook 'solr', '~> 0.3.0'
+
+# Redis server
+cookbook 'redisio'

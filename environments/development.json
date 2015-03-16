@@ -3,26 +3,47 @@
   "json_class": "Chef::Environment",
   "chef_type": "environment",
   "description": "",
-  "default_attributes": {
+  "override_attributes": {
     // sudo config
-    "authorization": {
-      "sudo": {
-        "users": ["vagrant"],
-        "passwordless": true
+    // "authorization": {
+    //   "sudo": {
+    //     "users": ["vagrant"],
+    //     "passwordless": true
+    //   }
+    // },
+
+    "rvm": {
+      "group_users": ["vagrant"],
+      "vagrant": { 
+          "system_chef_client": "/opt/chef/bin/chef-client",
+          "system_chef_solo": "/opt/chef/bin/chef-solo"
       }
     },
 
-    // rvm config
-    "rvm": {
-      "default_ruby": "2.1.2"
-    },
-
     "nodejs": {
-      "version": "0.10.33"
+      "npm_packages": [
+        {
+          "name": "docpad",
+          "version": "6.69"
+        }, 
+        {
+          "name": "bower",
+          "version": "1.3.11"
+        }, 
+        {
+          "name": "grunt-cli",
+          "version": "0.1.13"
+        }
+      ]
     },
     
     "postgresql": {
       "version": "9.3"
+    },
+
+    "solr": {
+      "version": "4.2.0",
+      "port": "8983"
     }
   }
 }

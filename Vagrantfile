@@ -10,7 +10,9 @@ VAGRANTFILE_API_VERSION = "2"
 boxes = [
   { 
     name: 'ranun-dev', 
-    roles: ['app'], 
+    roles: ['app', 'solr'],
+    default: true,
+    autostart: true, 
     ip: '192.168.13.2', 
     vbox_config: [
       { '--memory' => '1024' }
@@ -20,8 +22,8 @@ boxes = [
       { 3000 => 3000 }
     ],
     synced_folders: [
-      { '../ranunculus' => '/home/vagrant/app' },
-      { '../design' => '/home/vagrant/design' }
+      { '../ranunculus' => '/home/vagrant/app' }
+      # { '../design' => '/home/vagrant/design' }
     ],
     commands: [
 
@@ -47,7 +49,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   end
   
   boxes.each do |opts|
-    config.vm.define opts[:name], :priviledge => false do |config|
+    config.vm.define opts[:name], primary: opts[:default], autostart: opts[:autostart], :priviledge => false do |config|
       # set hostname
       config.vm.hostname = opts[:name]
 
