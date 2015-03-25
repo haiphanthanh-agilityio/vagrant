@@ -23,24 +23,27 @@
     "nodejs": {
       "npm_packages": [
         {
-          "name": "docpad"
+          "name": "docpad",
+          "version": "6.69"
         }, 
         {
-          "name": "bower"
+          "name": "bower",
+          "version": "1.3.11"
         }, 
         {
-          "name": "grunt-cli"
+          "name": "grunt-cli",
+          "version": "0.1.13"
         }
       ]
-    }
+    },
     
-    // "postgresql": {
-    //   "version": "9.3"
-    // },
+    "postgresql": {
+      "version": "9.3"
+    },
 
-    // "solr": {
-    //   "version": "4.2.0",
-    //   "port": "8983"
-    // }
+    "solr": {
+      "version": "4.2.0",
+      "port": "8983"
+    }
   }
 }

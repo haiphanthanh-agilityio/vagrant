@@ -6,7 +6,7 @@
   
   "default_attributes": {
     "nodejs": {
-      "version": "0.12.0"
+      "version": "0.10.33"
     }
   },
 

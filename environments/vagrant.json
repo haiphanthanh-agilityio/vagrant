@@ -1,0 +1,33 @@
+{
+  "name": "vagrant",
+  "chef_type": "environment",
+  "json_class": "Chef::Environment",
+  "description": "The environment for app servers",
+  "override_attributes": {
+    
+    "rvm": {
+      "group_users": ["vagrant"],
+      "vagrant": { 
+          "system_chef_client": "/opt/chef/bin/chef-client",
+          "system_chef_solo": "/opt/chef/bin/chef-solo"
+      }
+    },
+
+    "nodejs": {
+      "npm_packages": [
+        {
+          "name": "bower",
+          "version": "1.3.11"
+        }
+      ]
+    },
+
+    "postgresql": {
+      
+    },
+
+    "nginx": {
+      "worker_processes": 2
+    }
+  }
+}

@@ -1,0 +1,39 @@
+{
+  "name": "postgresql-locale-fix",
+  "description": "",
+  "long_description": "",
+  "maintainer": "PATAHA",
+  "maintainer_email": "hai.phanthanh@asnet.com.vn",
+  "platforms": {
+    "ubuntu": ">= 0.0.0",
+    "debian": ">= 0.0.0",
+    "fedora": ">= 0.0.0",
+    "suse": ">= 0.0.0",
+    "amazon": ">= 0.0.0",
+    "redhat": ">= 6.0.0",
+    "centos": ">= 6.0.0",
+    "scientific": ">= 6.0.0",
+    "oracle": ">= 6.0.0"
+  },
+  "dependencies": {
+    "postgresql": ">= 0.0.0"
+  },
+  "recommendations": {
+  },
+  "suggestions": {
+  },
+  "conflicting": {
+  },
+  "providing": {
+  },
+  "replacing": {
+  },
+  "attributes": {
+  },
+  "groupings": {
+  },
+  "recipes": {
+    "default": "default"
+  },
+  "version": "0.0.1"
+}

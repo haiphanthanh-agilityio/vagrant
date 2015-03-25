@@ -1,0 +1,10 @@
+{
+  "chef_type": "node",
+  "description": "TribeLearn provisioning",
+  "environment": "staging",
+  "run_list": [
+    "role[app]",
+    "role[solr]",
+    "role[redis]"
+  ]  
+}
