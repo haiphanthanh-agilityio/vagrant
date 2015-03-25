@@ -16,20 +16,22 @@ cookbook 'user'
 
 # App server cookbooks
 cookbook 'rvm',
-  :git => 'https://github.com/fnichol/chef-rvm'
+  :git => 'https://github.com/martinisoft/chef-rvm',
+  :ref => "v0.9.2"
 
 # DB server cookbooks
-cookbook 'postgresql', github: "phlipper/chef-postgresql"
+# cookbook 'postgresql', github: "phlipper/chef-postgresql"
+cookbook 'mysql', "5.6.1"
 
 # Web and App server cookbooks
-cookbook 'nginx', '2.4.2'
+cookbook 'nginx'
 
-cookbook 'nodejs', '~> 2.2.0'
+cookbook 'nodejs'
 # cookbook 'npm',
 #   git: 'https://github.com/soofaloofa/chef-npm-package-install'
 
 # Solr search server
-cookbook 'solr', '~> 0.3.0'
+# cookbook 'solr', '~> 0.3.0'
 
 # Redis server
 cookbook 'redisio'

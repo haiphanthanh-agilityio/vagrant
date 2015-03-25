@@ -9,29 +9,56 @@ VAGRANTFILE_API_VERSION = "2"
 # Server roles includes: app, web, db
 boxes = [
   { 
-    name: 'ranun-dev', 
-    roles: ['app', 'solr'],
+    name: 'mayflower-dev', 
     default: true,
     autostart: true, 
-    ip: '192.168.13.2', 
+    ip: '192.168.23.2', 
     vbox_config: [
       { '--memory' => '1024' }
     ],
     forwarded_ports: [
-      { 8003 => 8003 },
       { 3000 => 3000 }
     ],
     synced_folders: [
-      { '../ranunculus' => '/home/vagrant/app' }
-      # { '../design' => '/home/vagrant/design' }
+      { '../payrollhero' => '/home/vagrant/app' }
     ],
     commands: [
 
+    ],
+    hosts: [
+      'payrollhero.dev',
+      'login.payrollhero.dev',
+      'www.payrollhero.dev',
+      'test.payrollhero.dev',
+      'assets.payrollhero.dev',
+      'manage.payrollhero.dev',
+      'demo.payrollhero.dev'
+    ]
+  },
+  { 
+    name: 'mayflower-auth-dev', 
+    default: true,
+    autostart: true, 
+    ip: '192.168.23.3', 
+    vbox_config: [
+      { '--memory' => '1024' }
+    ],
+    forwarded_ports: [
+      { 3000 => 3030 }
+    ],
+    synced_folders: [
+      { '../auth' => '/home/vagrant/app' }
+    ],
+    commands: [
+
+    ],
+    hosts: [
+      'auth.payrollhero.dev'
     ]
   }
 ]
 
-Vagrant.require_plugin "vagrant-omnibus"
+# Vagrant.require_plugin "vagrant-hostsupdater"
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
@@ -43,15 +70,26 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # config.ssh.pty = true
   config.ssh.forward_agent = true
 
-  # vagrant-omnibus
-  if Vagrant.has_plugin?('vagrant-omnibus')
-    config.omnibus.chef_version = '11.16.0'
-  end
-  
+  # # vagrant-omnibus
+  # if Vagrant.has_plugin?('vagrant-omnibus')
+  #   config.omnibus.chef_version = '11.16.0'
+  # end
+
+  # vagrant-hostsupdater
+  # if Vagrant.has_plugin?('vagrant-hostsupdater')
+    
+  # end
+
   boxes.each do |opts|
-    config.vm.define opts[:name], primary: opts[:default], autostart: opts[:autostart], :priviledge => false do |config|
+    config.vm.define opts[:name], primary: opts[:default], autostart: opts[:autostart], :priviledge => true do |config|
       # set hostname
       config.vm.hostname = opts[:name]
+
+      # Host resolver
+      if opts[:hosts].kind_of?(Array)
+        config.hostsupdater.remove_on_suspend = true
+        config.hostsupdater.aliases = opts[:hosts]
+      end
 
       # network config
       config.vm.network :private_network, ip: opts[:ip]
@@ -69,7 +107,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           if Vagrant::Util::Platform.windows?
             config.vm.synced_folder folder1, folder2
           else
-            config.vm.synced_folder folder1, folder2, type: "nfs", mount_options: ['rw', 'vers=3', 'tcp', 'fsc']
+            config.vm.synced_folder folder1, folder2
           end
         end
       end if opts[:synced_folders]
@@ -79,6 +117,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         config.vm.provider :virtualbox do |vb|
           # naming for vm box
           vb.name = "vagrant_#{opts[:name]}"
+
+          # DNS forward
+          vb.customize ["modifyvm", :id, "--natdnshostresolver1", "on"]
 
           # set the hw config
           opts[:vbox_config].each do |hash|
@@ -97,24 +138,24 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         config.vm.provision :shell, inline: cmd
       end if opts[:commands]
 
-      # Configure the box with Chef
-      config.vm.provision :chef_solo do |chef|
-        chef.custom_config_path = "Vagrantfile.chef"
+      # # Configure the box with Chef
+      # config.vm.provision :chef_solo do |chef|
+      #   chef.custom_config_path = "Vagrantfile.chef"
         
-        # Chef config
-        chef.environment = 'development'
-        chef.environments_path = 'environments'
-        chef.roles_path = 'roles'
-        chef.cookbooks_path = ['cookbooks', 'site-cookbooks']
-        chef.data_bags_path = 'data_bags'
+      #   # Chef config
+      #   chef.environment = 'development'
+      #   chef.environments_path = 'environments'
+      #   chef.roles_path = 'roles'
+      #   chef.cookbooks_path = ['cookbooks', 'site-cookbooks']
+      #   chef.data_bags_path = 'data_bags'
 
-        # Add a Chef roles if specified
-        opts[:roles].each do |role|
-          chef.add_role(role)
-        end if opts[:roles].kind_of?(Array)
+      #   # Add a Chef roles if specified
+      #   opts[:roles].each do |role|
+      #     chef.add_role(role)
+      #   end if opts[:roles].kind_of?(Array)
 
-        # chef.log_level = :debug
-      end
+      #   # chef.log_level = :debug
+      # end
     end
   end
 end

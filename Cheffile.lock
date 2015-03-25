@@ -3,50 +3,49 @@ SITE
   specs:
     7-zip (1.0.2)
       windows (>= 1.2.2)
-    apt (2.3.8)
+    apt (2.6.1)
     ark (0.9.0)
       7-zip (>= 0.0.0)
       windows (>= 0.0.0)
     bluepill (2.3.1)
       rsyslog (>= 0.0.0)
-    build-essential (1.4.2)
+    build-essential (2.2.0)
     chef_gem (0.1.0)
     chef_handler (1.1.6)
     imagemagick (0.2.3)
-    java (1.31.0)
-    nginx (2.4.2)
+    mysql (5.6.1)
+      yum-mysql-community (>= 0.0.0)
+    nginx (2.7.6)
       apt (~> 2.2)
       bluepill (~> 2.3)
-      build-essential (~> 1.4)
-      ohai (~> 1.1)
+      build-essential (~> 2.0)
+      ohai (~> 2.0)
       runit (~> 1.2)
-      yum (~> 3.0)
-      yum-epel (>= 0.0.0)
+      yum-epel (~> 0.3)
     nodejs (2.2.0)
       apt (>= 0.0.0)
       ark (>= 0.0.0)
       build-essential (>= 0.0.0)
       yum-epel (>= 0.0.0)
-    ohai (1.1.12)
+    ohai (2.0.1)
     redisio (2.2.4)
       build-essential (>= 0.0.0)
       ulimit (>= 0.1.2)
-    rsyslog (1.12.2)
-    runit (1.5.8)
+    rsyslog (1.15.0)
+    runit (1.5.18)
       build-essential (>= 0.0.0)
       yum (~> 3.0)
       yum-epel (>= 0.0.0)
-    solr (0.3.0)
-      apt (>= 0.0.0)
-      java (>= 0.0.0)
-    sudo (2.5.2)
-    ulimit (0.3.2)
+    sudo (2.7.1)
+    ulimit (0.3.3)
     user (0.3.0)
-    windows (1.34.8)
+    windows (1.36.6)
       chef_handler (>= 0.0.0)
-    yum (3.1.2)
-    yum-epel (0.3.4)
+    yum (3.5.3)
+    yum-epel (0.6.0)
       yum (~> 3.0)
+    yum-mysql-community (0.1.14)
+      yum (>= 3.0)
 
 GIT
   remote: https://github.com/fnichol/chef-git.git
@@ -57,27 +56,19 @@ GIT
       runit (>= 0.0.0)
 
 GIT
-  remote: https://github.com/fnichol/chef-rvm
-  ref: master
-  sha: 87f58d428c160337c1581ed1130a1a53d94e5126
-  specs:
-    rvm (0.9.1)
-      chef_gem (>= 0.0.0)
-
-GIT
   remote: https://github.com/hw-cookbooks/locale
   ref: master
-  sha: 297c012e5468d9c39c292791b6c22b38271a17c7
+  sha: 82b365ba140fe303a5c137aa4a7cc1ad44791bf4
   specs:
-    locale (1.0.0)
+    locale (1.0.3)
 
 GIT
-  remote: https://github.com/phlipper/chef-postgresql
-  ref: master
-  sha: 4ed030dd3f6c770dd0f6a7a9bdc20f48ede448e0
+  remote: https://github.com/martinisoft/chef-rvm
+  ref: v0.9.2
+  sha: dd58087e7399097a9b9df4e2e7235908aace2afd
   specs:
-    postgresql (0.14.1)
-      apt (>= 1.9.0)
+    rvm (0.9.2)
+      chef_gem (>= 0.0.0)
 
 DEPENDENCIES
   apt (>= 0)
@@ -85,12 +76,11 @@ DEPENDENCIES
   git (>= 0)
   imagemagick (>= 0)
   locale (>= 0)
-  nginx (= 2.4.2)
-  nodejs (~> 2.2.0)
-  postgresql (>= 0)
+  mysql (= 5.6.1)
+  nginx (>= 0)
+  nodejs (>= 0)
   redisio (>= 0)
   rvm (>= 0)
-  solr (~> 0.3.0)
   sudo (>= 0)
   user (>= 0)
 

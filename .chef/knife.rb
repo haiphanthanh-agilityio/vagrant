@@ -6,4 +6,6 @@ data_bag_path    "data_bags"
 #encrypted_data_bag_secret "data_bag_key"
 
 knife[:berkshelf_path] = "cookbooks"
-knife[:bootstrap_version] = "11.16.0"
+knife[:bootstrap_version] = "11.18.6"
+knife[:ssh_user] = "vagrant"
+knife[:identity_file] = ".vagrant/machines/mayflower-auth-dev/virtualbox/private_key"
