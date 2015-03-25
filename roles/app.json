@@ -11,21 +11,13 @@
       "role[base]",
       "role[rvm]",
       "role[nodejs]",
-      "role[db_postgresql]"
-    ],
-    "vagrant": [
-      "role[base]",
-      "role[rvm]",
-      "role[nodejs]",
-      "role[db_postgresql]",
-      "role[nginx]"
+      "role[redis]"
     ],
     "staging": [
       "role[base]",
       "role[rvm]",
       "role[nodejs]",
-      "role[db_postgresql]",
-      "role[nginx]"
+      "role[redis]"
     ]
   }
 }

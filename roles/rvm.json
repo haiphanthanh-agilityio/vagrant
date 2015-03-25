@@ -5,13 +5,15 @@
   "description": "The role that used to install RVM, Ruby, Rails servers",
   "default_attributes": {
     "rvm": {
-      "default_ruby": "2.1.2",
-      "gems": {
-        "ruby-2.1.2": [
-          // { "name": "sass" },
-          // { "name": "compass" }
-        ]
-      }
+      "gpg": {},
+      "gpg_key": "409B6B1796C275462A1703113804BB82D39DC0E3",
+      "default_ruby": "2.1.5"
+      // "gems": {
+      //   "ruby-2.1.5": [
+      //     { "name": "sass" },
+      //     { "name": "compass" }
+      //   ]
+      // }
     }
   },
 
@@ -24,10 +26,7 @@
       "recipe[rvm::vagrant]",
       "recipe[rvm::system]"
     ],
-    "vagrant": [
-      "recipe[rvm::vagrant]",
-      "recipe[rvm::system]"
-    ],
+
     "staging": [
       "recipe[rvm::system]"
     ]

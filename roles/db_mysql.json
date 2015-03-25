@@ -1,0 +1,27 @@
+{
+  "name": "db_mysql",
+  "chef_type": "role",
+  "json_class": "Chef::Role",
+  "description": "The role that used to install MySQL to DB servers",
+
+  "default_attributes": {
+    "mysql": {
+      "server_root_password": "",
+      "server_debian_password": ""
+    }
+  },
+
+  "run_list": [
+  ],
+
+  "env_run_lists": {
+    "development": [
+      "recipe[mysql::server]",
+      "recipe[mysql::client]"
+    ],
+
+    "staging": [
+      "recipe[mysql::client]"
+    ]
+  }
+}
