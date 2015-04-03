@@ -14,7 +14,8 @@ boxes = [
     autostart: true, 
     ip: '192.168.23.2', 
     vbox_config: [
-      { '--memory' => '1024' }
+      { 'memory' => '1024' },
+      { 'cpus' => '2' }
     ],
     forwarded_ports: [
       { 3000 => 3000 }
@@ -41,7 +42,7 @@ boxes = [
     autostart: true, 
     ip: '192.168.23.3', 
     vbox_config: [
-      { '--memory' => '1024' }
+      { 'memory' => '1024' }
     ],
     forwarded_ports: [
       { 3000 => 3030 }
@@ -69,16 +70,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # ssh config
   # config.ssh.pty = true
   config.ssh.forward_agent = true
-
-  # # vagrant-omnibus
-  # if Vagrant.has_plugin?('vagrant-omnibus')
-  #   config.omnibus.chef_version = '11.16.0'
-  # end
-
-  # vagrant-hostsupdater
-  # if Vagrant.has_plugin?('vagrant-hostsupdater')
-    
-  # end
+  config.ssh.insert_key = false
 
   boxes.each do |opts|
     config.vm.define opts[:name], primary: opts[:default], autostart: opts[:autostart], :priviledge => true do |config|
@@ -107,7 +99,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           if Vagrant::Util::Platform.windows?
             config.vm.synced_folder folder1, folder2
           else
-            config.vm.synced_folder folder1, folder2
+            config.vm.synced_folder folder1, folder2, type: :nfs
           end
         end
       end if opts[:synced_folders]
@@ -124,6 +116,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
           # set the hw config
           opts[:vbox_config].each do |hash|
             hash.each do |key, value|
+              key = "--#{key}" unless key =~ /^--/
               vb.customize ['modifyvm', :id, key, value]
             end
           end
@@ -138,24 +131,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
         config.vm.provision :shell, inline: cmd
       end if opts[:commands]
 
-      # # Configure the box with Chef
-      # config.vm.provision :chef_solo do |chef|
-      #   chef.custom_config_path = "Vagrantfile.chef"
-        
-      #   # Chef config
-      #   chef.environment = 'development'
-      #   chef.environments_path = 'environments'
-      #   chef.roles_path = 'roles'
-      #   chef.cookbooks_path = ['cookbooks', 'site-cookbooks']
-      #   chef.data_bags_path = 'data_bags'
-
-      #   # Add a Chef roles if specified
-      #   opts[:roles].each do |role|
-      #     chef.add_role(role)
-      #   end if opts[:roles].kind_of?(Array)
-
-      #   # chef.log_level = :debug
-      # end
     end
   end
 end
